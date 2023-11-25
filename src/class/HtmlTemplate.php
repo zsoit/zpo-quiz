@@ -70,6 +70,21 @@ class HtmlTemplate
         HTML;
     }
 
+    public static  function scoreCount(){
+        echo <<<HTML
+            <p id="score"></p>
+        HTML;
+
+    }
+
+    public static function checkButton()
+    {
+        echo <<<HTML
+        <div id="submit-btn" class="showInfoBtn" onclick="showInfo()">Sprawdź wynik</div>
+        HTML;
+
+    }
+
 
     public static function QuestionItemFrom10($row)
     {

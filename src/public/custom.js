@@ -1,15 +1,54 @@
 function CorrectAnswears(){
     const elements = document.querySelectorAll(".correct");
     const valuesArray = Array.from(elements).map(element => element.value);
-    console.log("The correct: " + valuesArray + ", ");
+    return valuesArray;
 
 
 }
 
-function CheckAnswear(){
+function CheckAnswears(){
     const elements = document.querySelectorAll("input:checked");
     const valuesArray = Array.from(elements).map(element => element.value);
-    console.log("The checked: " + valuesArray + ", ");
+    return valuesArray;
+
+}
+
+function getPoints() {
+    const check = CheckAnswears();
+    const correct = CorrectAnswears();
+
+
+    const point = compareArraysAndAwardPoints(check, correct);
+    return "Uzyskałeś: " + point + " /10 pkt  ";
+}
+
+
+
+function showInfo(){
+    const score = document.querySelector("#score");
+    const question = document.querySelectorAll(".question");
+    const btn =  document.querySelector(".showInfoBtn");
+    
+    const points = getPoints();
+
+    score.innerHTML = points;
+    question.forEach(item => item.style.display="none");
+    btn.style.display="none";
+
+
+
+}
+
+
+
+function test(){
+    const check = CheckAnswears();
+    const correct = CorrectAnswears();
+    console.log("The correct: " + correct + ", ");
+    console.log("The checked: " + check + ", ");
+
+    const points = getPoints();
+    console.log(points);
 
 }
 
@@ -25,8 +64,9 @@ function addValueToArray(selector, array) {
 
 function compareArraysAndAwardPoints(array1, array2) {
     if (array1.length !== array2.length) {
-        console.error("Tablice muszą mieć taką samą długość.");
-        return 0;  // Jeżeli tablice mają różne długości, nie dodajemy punktów
+        console.error("Arrays must be the same lenght!.");
+        window.alert("Zaznacz wszystkie odpowiedzi na pytania!");
+        return 0;
     }
 
     let points = 0;
