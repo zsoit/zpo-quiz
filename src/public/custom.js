@@ -1,3 +1,31 @@
+function getTrue() {
+    const correctElements = document.querySelectorAll(".correct");
+
+    correctElements.forEach(function (correct) {
+        let target = correct.getAttribute("target");
+
+
+        let radio = document.getElementById(`radio${target}`);
+
+        if(radio.checked){
+            document.getElementById(target).style.backgroundColor = "green";
+            document.getElementById(target).style.color = "white";
+
+        }
+
+        // disabled
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach(function (radio) {
+            radio.disabled = true;
+        });
+
+
+    });
+}
+
+getTrue();
+
+
 function CorrectAnswears(){
     const elements = document.querySelectorAll(".correct");
     const valuesArray = Array.from(elements).map(element => element.value);
@@ -19,7 +47,10 @@ function getPoints() {
 
 
     const point = compareArraysAndAwardPoints(check, correct);
-    return "Uzyskałeś: " + point + " /10 pkt  ";
+
+   return "Uzyskałeś: " + point + " /10 pkt  ";
+
+
 }
 
 
@@ -28,12 +59,16 @@ function showInfo(){
     const score = document.querySelector("#score");
     const question = document.querySelectorAll(".question");
     const btn =  document.querySelector(".showInfoBtn");
-    
+
     const points = getPoints();
 
     score.innerHTML = points;
-    question.forEach(item => item.style.display="none");
+    // question.forEach(item => item.style.display="none");
     btn.style.display="none";
+    getTrue();
+
+
+
 
 
 
@@ -63,13 +98,14 @@ function addValueToArray(selector, array) {
 
 
 function compareArraysAndAwardPoints(array1, array2) {
+    let points = 0;
     if (array1.length !== array2.length) {
         console.error("Arrays must be the same lenght!.");
         window.alert("Zaznacz wszystkie odpowiedzi na pytania!");
-        return 0;
+
+        return points;
     }
 
-    let points = 0;
 
     for (let i = 0; i < array1.length; i++) {
         if (array1[i] === array2[i]) {

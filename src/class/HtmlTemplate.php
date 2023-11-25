@@ -56,6 +56,7 @@ class HtmlTemplate
                         <label class="option" id="C"><input type="radio" name="answer" value="C">{$row["answer_c"]} </label> <br>
                         <label class="option" id="D"><input type="radio" name="answer" value="D"> {$row["answer_d"]} </label> <br>
                         
+                        
                           <input type="text" value="{$row["correct_answer"]}" id="correct"/> 
                     </div>
                     <br>
@@ -72,7 +73,7 @@ class HtmlTemplate
 
     public static  function scoreCount(){
         echo <<<HTML
-            <p id="score"></p>
+            <h3 id="score"></h3>
         HTML;
 
     }
@@ -88,6 +89,7 @@ class HtmlTemplate
 
     public static function QuestionItemFrom10($row)
     {
+//        $input_id = "";
         echo <<<HTML
         <div class="question" id="{$row['id']}">
             <fieldset>
@@ -99,12 +101,14 @@ class HtmlTemplate
                     </div>
             
                     <div class="options">
-                        <label class="option" id="A{$row['id']}"><input class="add{$row['id']}" type="radio" name="answer" value="A" required> {$row["answer_a"]}  </label> <br>
-                        <label class="option" id="B{$row['id']}"><input class="add{$row['id']}" type="radio" name="answer" value="B"> {$row["answer_b"]} </label> <br>
-                        <label class="option" id="C{$row['id']}"><input class="add{$row['id']}" type="radio" name="answer" value="C">{$row["answer_c"]} </label> <br>
-                        <label class="option" id="D{$row['id']}"><input class="add{$row['id']}" type="radio" name="answer" value="D"> {$row["answer_d"]} </label> <br>
+                        <label class="option" id="A{$row['id']}"><input class="add{$row['id']}" id="radioA{$row['id']}" type="radio" name="answer" value="A" required> {$row["answer_a"]}  </label> <br>
+                        <label class="option" id="B{$row['id']}"><input class="add{$row['id']}" id="radioB{$row['id']}" type="radio" name="answer" value="B"> {$row["answer_b"]} </label> <br>
+                        <label class="option" id="C{$row['id']}"><input class="add{$row['id']}" id="radioC{$row['id']}" type="radio" name="answer" value="C">{$row["answer_c"]} </label> <br>
+                        <label class="option" id="D{$row['id']}"><input class="add{$row['id']}" id="radioD{$row['id']}" type="radio" name="answer" value="D"> {$row["answer_d"]} </label> <br>
+                        <label class="option" id="0" style="display: none"><input type="radio" name="answer" value="0"  checked> 0 </label> <br>
                         
-                          <input type="text" value="{$row["correct_answer"]}" id="correct{$row['id']}" class="correct"/> 
+                        
+                          <input type="text" value="{$row["correct_answer"]}" id="correct{$row['id']}" target="{$row["correct_answer"]}{$row['id']}" class="correct"/> 
                     </div>
                     <br>
                 </form>

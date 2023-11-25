@@ -29,13 +29,14 @@ class App
 
     public function Exam10(){
 
+
         HtmlTemplate::PrimaryHeader("TEST 10 PYTAŃ");
-        HtmlTemplate::scoreCount();
-        for($i=0; $i<10; $i++){
+        for($i=0; $i<9; $i++){
             $random_question = $this->question->getRandomQuetion();
             Views::DisplayQuestionFromExam10($random_question);
         }
         HtmlTemplate::checkButton();
+        HtmlTemplate::scoreCount();
     }
 
     public function AddUser(){
