@@ -9,11 +9,9 @@ CREATE TABLE questions (
 );
 
 CREATE TABLE users (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     login VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    correct_answers INTEGER NOT NULL DEFAULT 0,
-    incorrect_answers INTEGER NOT NULL DEFAULT 0
 );
 
 INSERT INTO questions (question_text, answer_a, answer_b, answer_c, answer_d, correct_answer) VALUES

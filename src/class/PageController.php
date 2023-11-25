@@ -13,12 +13,29 @@ class PageController extends App
                 break;
 
             case 'exam10':
-                echo "Test 10 pytan - do zrobienia";
+                $this->Exam10();
                 break;
 
             case 'account':
                 echo "Konto";
                 break;
+
+            case "add_user":
+                $this->Adduser();
+                break;
+
+            case "login":
+                $this->Login();
+                break;
+
+            case "login_form":
+                $this->LoginForm();
+                break;
+
+            case "add_user_form":
+                $this->AddUserForm();
+                break;
+
             default:
                 $this->Index();
                 break;

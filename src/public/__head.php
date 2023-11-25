@@ -14,5 +14,12 @@ $CUSTOM_CSS = file_get_contents("./src/public/custom.css");
     <link rel="icon" href="<?php echo $ICON; ?>">
     <link rel="stylesheet" href="<?php echo $WATER_CSS; ?>">
     <style><?php echo $CUSTOM_CSS; ?></style>
+    <script src="./src/public/custom.js"></script>
 </head>
 <body>
+
+<script>
+
+
+
+</script>

@@ -42,7 +42,7 @@ footer p {
     margin-top: 200px;
 }
 
-#correct{
+#correct, .correct{
     display: none;
 }
 

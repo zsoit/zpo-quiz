@@ -13,9 +13,8 @@
         <div class="menu__item">
             <a href="?action=exam10"><p>Test 10 Pytań</p></a>
         </div>
-        <div class="menu__item">
-            <a href="?action=account"><p>Konto</p></a>
+        <div class="menu__item" id="login-name">
+            <a href="?action=login_form"><p>Konto</p></a>
         </div>
-
     </div>
 <hr>
