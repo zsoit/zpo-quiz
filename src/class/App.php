@@ -31,7 +31,7 @@ class App
 
 
         HtmlTemplate::PrimaryHeader("TEST 10 PYTAŃ");
-        for($i=0; $i<9; $i++){
+        for($i=0; $i<10; $i++){
             $random_question = $this->question->getRandomQuetion();
             Views::DisplayQuestionFromExam10($random_question);
         }
