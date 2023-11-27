@@ -6,10 +6,13 @@ class PageController extends App
     {
         $page = DataController::fetchGET('action');
 
-        switch($page)
-        {
+        switch ($page) {
+            case 'home':
+                $this->Index();
+                break;
+
             case 'single':
-                $this->AllQue();
+                $this->RandomQuestion();
                 break;
 
             case 'exam10':
@@ -20,12 +23,28 @@ class PageController extends App
                 $this->AddForm();
                 break;
 
+            case "add":
+                $this->Add();
+                break;
+
+            case "edit_form":
+                $this->EditForm();
+                break;
+
+            case "edit":
+                $this->Edit();
+                break;
+
+            case "delete":
+                $this->Delete();
+                break;
+
             case "list":
                 $this->List();
                 break;
 
             default:
-                $this->Index();
+                $this->Page404();
                 break;
         }
 

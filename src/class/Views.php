@@ -2,7 +2,7 @@
 
 class Views
 {
-    public static  function DisplayQuestion($result)
+    public static function DisplayQuestion($result)
     {
 
         $row = $result->fetchArray();
@@ -10,7 +10,7 @@ class Views
 
     }
 
-    public static  function DisplayQuestionFromExam10($result)
+    public static function DisplayQuestionFromExam10($result)
     {
 
         $row = $result->fetchArray();
@@ -18,10 +18,16 @@ class Views
 
     }
 
-    public static function DisplayAllQue($res){
-        while($row = $res->fetchArray()){
+    public static function DisplayAllQue($res)
+    {
+        while ($row = $res->fetchArray()) {
             HtmlTemplate::QuestionsList($row);
         }
+    }
+    public static function DisplayEditForm($res){
+        $id = DataController::fetchGET("id");
+        $row = $res->fetchArray();
+        HtmlTemplate::EditForm("index.php?action=edit&id=$id", $row);
     }
 
 }

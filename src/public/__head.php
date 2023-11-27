@@ -17,9 +17,3 @@ $CUSTOM_CSS = file_get_contents("./src/public/custom.css");
     <script src="./src/public/custom.js"></script>
 </head>
 <body>
-
-<script>
-
-
-
-</script>

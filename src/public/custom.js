@@ -26,29 +26,20 @@ function getTrue() {
 getTrue();
 
 
-function CorrectAnswears(){
-    const elements = document.querySelectorAll(".correct");
-    const valuesArray = Array.from(elements).map(element => element.value);
-    return valuesArray;
 
-
-}
-
-function CheckAnswears(){
-    const elements = document.querySelectorAll("input:checked");
-    const valuesArray = Array.from(elements).map(element => element.value);
-    return valuesArray;
+function getAnswear(selector){
+    const elements = document.querySelectorAll(selector);
+    return Array.from(elements).map(element => element.value);
 
 }
 
 function getPoints() {
-    const check = CheckAnswears();
-    const correct = CorrectAnswears();
-
+    const check = getAnswear("input:checked");
+    const correct = getAnswear(".correct");
 
     const point = compareArraysAndAwardPoints(check, correct);
 
-   return "Uzyskałeś: " + point + " /10 pkt  ";
+   return `Uzyskałeś ${point} /10 pkt`;
 
 
 }
@@ -68,17 +59,12 @@ function showInfo(){
     getTrue();
 
 
-
-
-
-
 }
 
 
-
-function test(){
-    const check = CheckAnswears();
-    const correct = CorrectAnswears();
+function Test(){
+    const check = getAnswear("input:checked");
+    const correct = getAnswear(".correct");
     console.log("The correct: " + correct + ", ");
     console.log("The checked: " + check + ", ");
 
@@ -101,8 +87,6 @@ function compareArraysAndAwardPoints(array1, array2) {
     let points = 0;
     if (array1.length !== array2.length) {
         console.error("Arrays must be the same lenght!.");
-        window.alert("Zaznacz wszystkie odpowiedzi na pytania!");
-
         return points;
     }
 
@@ -117,6 +101,12 @@ function compareArraysAndAwardPoints(array1, array2) {
 }
 
 
+function changeColor(selector,color,info){
+    document.querySelector(selector).style.backgroundColor=color;
+    document.querySelector(selector).style.color="white";
+}
+
+
 function checkQue(){
     const getAn = document.querySelector('input[name="answer"]:checked');
     const correct = document.querySelector("#correct").value;
@@ -126,17 +116,19 @@ function checkQue(){
     if(getAn.value == correct){
         alert.innerHTML="Super! poprawna odpowiedź";
         alert.style.color="green";
-        document.querySelector("#"+correct).style.backgroundColor="green";
-        document.querySelector("#"+correct).style.color="white";
+
+
+        changeColor(`#${correct}`,"green");
 
 
     }
     else {
         alert.innerHTML="Niepoprawna odpowiedź! Poprawna odpowiedź to " + correct;
-        document.querySelector("#"+getAn.value).style.backgroundColor="red";
-        document.querySelector("#"+getAn.value).style.color="white";
-
         alert.style.color="red";
+
+        changeColor(`#${getAn.value}`,"red");
+
+
     }
 
     document.querySelectorAll("input").forEach(item => {

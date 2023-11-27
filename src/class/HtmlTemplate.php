@@ -15,6 +15,7 @@ class HtmlTemplate
             <p><u>Temat</u>: Quiz tekstowy - test wyboru, pytania w postaci tekstowej, dowolne dziedziny wiedzy</p>
             <p><u>Język programowania</u>: PHP</p>
             <p><u>Baza Danych</u>: sqlite <a href="/database" target="_blank"> - phpLiteAdmin </a> (hasło: admin)</p>
+            <p><u>Biblioteki</u>: SQLite3 </p>
             <p><u>Technologie</u>: HTML,CSS,JavaScript</p>
             
             <table>
@@ -81,7 +82,7 @@ class HtmlTemplate
     public static function checkButton()
     {
         echo <<<HTML
-        <div id="submit-btn" class="showInfoBtn" onclick="showInfo()">Sprawdź wynik</div>
+            <div id="submit-btn" class="showInfoBtn" onclick="showInfo()">Sprawdź wynik</div>
         HTML;
 
     }
@@ -161,7 +162,7 @@ class HtmlTemplate
         <form action="$path" method="POST">
             <fieldset>
                 <legend>Pytanie</legend>
-                <input type="text" name="login" required>
+                <input type="text" name="q_text" required>
             </fieldset>
             
             <fieldset>
@@ -186,7 +187,7 @@ class HtmlTemplate
             
               <fieldset>
                 <legend>Poprawna odpowiedź: </legend>
-                <select name="correct_answear">
+                <select name="correct">
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>
@@ -199,14 +200,59 @@ class HtmlTemplate
 
     }
 
+    public static function EditForm($path,$row): void
+    {
+        echo <<<HTML
+        <form action="$path" method="POST">
+            <fieldset>
+                <legend>Pytanie {$row['id']}</legend>
+                <input type="text" name="q_text"  value="{$row['question_text']}" required>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Odpowiedź A</legend>
+                <input type="text" id="a" name="a"  value="{$row['answer_a']}" required>
+            </fieldset>
+            
+          <fieldset>
+                <legend>Odpowiedź B</legend>
+                <input type="text" id="b" name="b" value="{$row['answer_b']}" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Odpowiedź C</legend>
+                <input type="text" id="c" name="c"  value="{$row['answer_c']}" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Odpowiedź D</legend>
+                <input type="text" id="d" name="d" value="{$row['answer_d']}" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Poprawna odpowiedź: </legend>
+                <select name="correct">
+                    <option value="{$row['correct_answer']}">Aktualna: {$row['correct_answer']}</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </fieldset>
+            <input type="submit" value="Zapisz">
+        </form>
+        HTML;
+
+    }
+
     public static function QuestionsList($row){
         echo <<<HTML
         
-        <table>
+        <table class="que_list">
             <tr>
                 <td>#{$row['id']} - {$row['question_text']}</td>
-                <td><input type="checkbox" name="" id=""> Usuń</td>
-                <td><a href="?index.php?action=edit&id=1">Edytuj</a></td>
+                <td><a style="color: red" href="index.php?action=delete&id={$row['id']}">Usuń</a></td>
+                <td><a href="index.php?action=edit_form&id={$row['id']}">Edytuj</a></td>
             </tr>
         </table>
 
@@ -214,31 +260,6 @@ class HtmlTemplate
 
     }
 
-    public static function ConfirmDelte($id)
-    {
-        echo <<<HTML
-        <h1>USUWANIE</h1>
-        <p>Czy jesteś pewien że chcesz usunąć cytat #$id?</p>
-        <a href="?action=delete&id=$id&confirm=true">
-            <button>
-                Usun
-            </button>
-        </a>
-        HTML;
-    }
-
-    public static function OptionCytat($id)
-    {
-        echo <<<HTML
-        <a href="?action=delete&id=$id">
-            <button>Usuń #$id </button>
-        </a>
-        <a href="?action=update__form&id=$id">
-            <button>Edytuj #$id </button>
-        </a>
-        <br>
-        HTML;
-    }
 
 }
 

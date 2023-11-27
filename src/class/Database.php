@@ -26,13 +26,14 @@ class Database
         }
     }
 
-    public function escapeString($string)
+    public function escapeString($string): string
     {
         return $this->db->escapeString($string);
     }
 
     public function query($sql) {
-        $result = $this->db->query($sql);
+        $escape_sql= $this->escapeString($sql);
+        $result = $this->db->query($escape_sql);
 
         if (!$result) {
             die("Błąd zapytania: " . $this->db->lastErrorMsg());
