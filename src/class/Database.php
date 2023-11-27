@@ -16,14 +16,12 @@ class Database
         $this->db = new \SQLite3(DATABASE);
 
         if (!$this->db) {
-            die("Nie można połączyć się z bazą danych.");
+            die("<h1>Nie można połączyć się z bazą danych.<h1>");
         }
     }
 
     public function disconnect() {
-        if ($this->db) {
             $this->db->close();
-        }
     }
 
     public function escapeString($string): string
