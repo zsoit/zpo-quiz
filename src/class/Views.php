@@ -18,4 +18,10 @@ class Views
 
     }
 
+    public static function DisplayAllQue($res){
+        while($row = $res->fetchArray()){
+            HtmlTemplate::QuestionsList($row);
+        }
+    }
+
 }

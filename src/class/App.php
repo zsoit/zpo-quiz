@@ -39,24 +39,17 @@ class App
         HtmlTemplate::scoreCount();
     }
 
-    public function AddUser(){
-        HtmlTemplate::PrimaryHeader("Dodanie");
-        $this->user->AddUser();
+
+    public function AddForm(){
+        HtmlTemplate::PrimaryHeader("Dodaj pytanie: ");
+        HtmlTemplate::AddForm("index.php?action=add");
     }
 
-    public function AdduserForm(){
-        HtmlTemplate::PrimaryHeader("DODAJ UŻYTKOWNIKA");
-        HtmlTemplate::AdduserFrom("index.php?action=add_user");
 
-    }
-
-    public function LoginForm(){
-        HtmlTemplate::PrimaryHeader("Logowanie");
-        HtmlTemplate::LoginForm("index.php?action=login");
-    }
-
-    public function Login(){
-        $this->user->TryLogin();
+    public function List(){
+        HtmlTemplate::PrimaryHeader("Lista pytań: ");
+        $res = $this->question->getAllQuestion();
+        Views::DisplayAllQue($res);
 
     }
 

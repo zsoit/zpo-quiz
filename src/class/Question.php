@@ -33,4 +33,9 @@ class Question
         return $this->db->query($sql);
 
     }
+
+    public function getAllQuestion(){
+        $sql = "SELECT question_text, id FROM questions";
+        return $this->db->query($sql);
+    }
 }

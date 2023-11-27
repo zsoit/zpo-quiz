@@ -154,6 +154,66 @@ class HtmlTemplate
 
     }
 
+
+    public static function AddForm($path)
+    {
+        echo <<<HTML
+        <form action="$path" method="POST">
+            <fieldset>
+                <legend>Pytanie</legend>
+                <input type="text" name="login" required>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Odpowiedź A</legend>
+                <input type="text" id="a" name="a" required>
+            </fieldset>
+            
+          <fieldset>
+                <legend>Odpowiedź B</legend>
+                <input type="text" id="b" name="b" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Odpowiedź C</legend>
+                <input type="text" id="c" name="c" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Odpowiedź D</legend>
+                <input type="text" id="d" name="d" required>
+            </fieldset>
+            
+              <fieldset>
+                <legend>Poprawna odpowiedź: </legend>
+                <select name="correct_answear">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </fieldset>
+            <input type="submit" value="Dodaj pytanie">
+        </form>
+        HTML;
+
+    }
+
+    public static function QuestionsList($row){
+        echo <<<HTML
+        
+        <table>
+            <tr>
+                <td>#{$row['id']} - {$row['question_text']}</td>
+                <td><input type="checkbox" name="" id=""> Usuń</td>
+                <td><a href="?index.php?action=edit&id=1">Edytuj</a></td>
+            </tr>
+        </table>
+
+        HTML;
+
+    }
+
     public static function ConfirmDelte($id)
     {
         echo <<<HTML
