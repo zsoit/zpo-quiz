@@ -58,9 +58,6 @@ footer p {
     transition: background-color 0.3s;
 }
 
-.option:hover {
-    /*background-color: #d0d0d0;*/
-}
 
 .option input {
     margin-right: 10px;

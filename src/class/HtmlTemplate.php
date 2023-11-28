@@ -62,7 +62,7 @@ class HtmlTemplate
                     </div>
                     <br>
                     
-                    <div type="submit" id="submit-btn" class="check-btn" onclick="checkQue()">Sprawdź</div>
+                    <div type="submit" id="submit-btn" class="check-btn" onclick="myQuiz.checkQue()">Sprawdź</div>
                     <h2 id="info"></h2>
                 </form>
             </div>
@@ -82,7 +82,7 @@ class HtmlTemplate
     public static function checkButton()
     {
         echo <<<HTML
-            <div id="submit-btn" class="showInfoBtn" onclick="showInfo()">Sprawdź wynik</div>
+            <div id="submit-btn" class="showInfoBtn" onclick="myQuiz.showInfo()">Sprawdź wynik</div>
         HTML;
 
     }

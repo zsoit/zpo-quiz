@@ -1,7 +1,8 @@
 <?php
-$ICON = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png";
-$WATER_CSS = "https://cdn.jsdelivr.net/npm/water.css@2/out/light.css";
+$ICON = "./src/public/icon.png";
+$WATER_CSS = "./src/public/water.css";
 $CUSTOM_CSS = file_get_contents("./src/public/custom.css");
+$CUSTOM_JS = "./src/public/custom.js";
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,6 @@ $CUSTOM_CSS = file_get_contents("./src/public/custom.css");
     <link rel="icon" href="<?php echo $ICON; ?>">
     <link rel="stylesheet" href="<?php echo $WATER_CSS; ?>">
     <style><?php echo $CUSTOM_CSS; ?></style>
-    <script src="./src/public/custom.js"></script>
+    <script src="<?php echo $CUSTOM_JS; ?>"></script>
 </head>
 <body>
